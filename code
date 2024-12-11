@@ -1,0 +1,74 @@
+class Single {
+    int data;
+    Single next;
+
+    Single(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+ class Compare {
+    public static int compareLists(Single list1, Single list2) {
+       
+        while (list1 != null && list2 != null) {
+           
+            if (list1.data != list2.data) {
+                return 0;
+            }
+           
+            list1 = list1.next;
+            list2 = list2.next;
+        }
+
+        
+        if (list1 == null && list2 == null) {
+            return 1;
+        }
+        return 0; 
+}
+    public static void main(String[] args)
+    {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        int t = scanner.nextInt(); 
+        for (int testCase = 0; testCase < t; testCase++)
+        {
+          
+            int n = scanner.nextInt(); 
+            Single list1 = null, tail1 = null;
+            for (int i = 0; i < n; i++) 
+            {
+                int data = scanner.nextInt();
+                Single newNode = new Single(data);
+                if (list1 == null) 
+                {
+                    list1 = newNode;
+                    tail1 = newNode;
+                } else
+                {
+                    tail1.next = newNode;
+                    tail1 = newNode;
+                }
+            }
+
+            
+            int m = scanner.nextInt(); 
+            Single list2 = null, tail2 = null;
+            for (int i = 0; i < m; i++) {
+                int data = scanner.nextInt();
+                Single newNode = new Single(data);
+                if (list2 == null) {
+                    list2 = newNode;
+                    tail2 = newNode;
+                } else {
+                    tail2.next = newNode;
+                    tail2 = newNode;
+                }
+            }
+
+           
+            System.out.println(compareLists(list1, list2));
+        }
+        scanner.close();
+    }
+}
